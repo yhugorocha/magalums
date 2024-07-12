@@ -1,5 +1,6 @@
 package com.hugodev.magalums.entity;
 
+import com.hugodev.magalums.dto.NotificationRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,5 +31,13 @@ public class Notification {
     @ManyToOne
     @JoinColumn(name = "status_id")
     private Status status;
+
+    public Notification (NotificationRequest notificationRequest){
+        this.dateTime = notificationRequest.dateTime();
+        this.destination = notificationRequest.destination();
+        this.message = notificationRequest.message();
+        this.channel = notificationRequest.channel().toChannel();
+        this.status = Status.Values.PENDING.toStatus();
+    }
 
 }
