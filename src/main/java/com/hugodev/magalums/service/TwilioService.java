@@ -4,14 +4,20 @@ import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TwilioService {
-    private final String ACCOUNT_SID = System.getenv("TWILIO_ACCOUNT_SID");
-    private final String AUTH_TOKEN = System.getenv("TWILIO_AUTH_TOKEN");
-    private final String NUMBER_SENDER = System.getenv("TWILIO_NUMBER_SENDER");
-    private final String WPP_NUMBER_SENDER = System.getenv("TWILIO_WPP_NUMBER_SENDER");
+
+    @Value("${TWILIO_ACCOUNT_SID}")
+    private String ACCOUNT_SID;
+    @Value("${TWILIO_AUTH_TOKEN}")
+    private String AUTH_TOKEN;
+    @Value("${TWILIO_NUMBER_SENDER}")
+    private String NUMBER_SENDER;
+    @Value("${TWILIO_WPP_NUMBER_SENDER}")
+    private String WPP_NUMBER_SENDER;
 
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
