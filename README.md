@@ -1,5 +1,5 @@
 # Desafio Backend da Magalu
-
+Confira o enunciado completo, [clique aqui](https://github.com/yhugorocha/magalums/blob/master/PROBLEM.md)
 ## Requisitos
 ### Requisitos funcionais
 1. Receber uma solicitação de agendamento de envio de notificação;
