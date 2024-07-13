@@ -26,6 +26,9 @@ public class NotificationService {
     @Autowired
     TwilioService twilioService;
 
+    @Autowired
+    EmailService emailService;
+
     public NotificationResponse createNotification(NotificationRequest notification){
        Notification newNotification = this.notificationRepository.save(new Notification(notification));
        return new NotificationResponse(newNotification.getId(), newNotification.getDateTime(), newNotification.getDestination(), newNotification.getMessage(), newNotification.getChannel(), newNotification.getStatus());
@@ -58,7 +61,7 @@ public class NotificationService {
                         this.twilioService.sendSMS(n.getDestination(), n.getMessage());
                         break;
                     case "email":
-                        //TODO Create email send
+                        this.emailService.sendEmail(n.getDestination(), n.getMessage());
                         break;
                     case "whatsapp":
                         this.twilioService.sendWPP(n.getDestination(), n.getMessage());
